@@ -2,8 +2,7 @@ kubectl: The third party command-line tool used to interact with Kubernetes clus
 
 #minikube
 #2CPU's or more, 2GB of free memory, 20GB of free disk space & Docker
-
-
+#ubuntu
 
 apt update -y
 apt upgrade -y
@@ -19,3 +18,18 @@ curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/b
 echo "$(cat kubectl.sha256) kubectl" | sha256sum --check
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 minikube start --driver=docker --force
+
+
+#RedHat
+yum install docker -y
+systemctl start docker
+systemctl status docker
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo mv kubectl /usr/local/bin/kubectl
+sudo chmod +x /usr/local/bin/kubectl
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+sudo yum install iptables -y
+yum install conntrack -y
+minikube start --driver=docker --force
+minikube status 
