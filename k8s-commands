@@ -6,6 +6,7 @@ kubectl get nodes/node/no: Displays the list of Kubernetes cluster nodes along w
 kubectl run pod_name --image=image_name: Creates a new pod in Kubernetes using the specified image, generating a single-container pod with the given name
 kubectl api-resources: Displays all Kubernetes resource types supported by the cluster’s API, including their short names, API groups, whether they are namespaced, and their resource kinds
 kubectl create -f podcreation.yml: Creates Kubernetes resources (such as Pods, Deployments, Services, etc.) defined inside the podcreation.yml file
+kubectl apply -f manifest_file.yml → Creates or updates Kubernetes resources defined in the specified YAML manifest file, applying any changes without deleting existing configurations
 kubectl get po pod_name: Displays the status and details of a specific pod by name, including its phase, age, and restart count
 kubectl get po pod_name -o wide: Shows detailed information about the specified pod, including its node assignment, pod IP, container images, and other extended metadata beyond the default output
 kubectl get po pod_name -o yaml: Displays the complete YAML representation of the specified pod, including metadata, specification, and current status
