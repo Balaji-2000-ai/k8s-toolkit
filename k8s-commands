@@ -7,8 +7,8 @@ kubectl create -f podcreation.yml: Creates Kubernetes resources (such as Pods, D
 kubectl get po pod_name: Displays the status and details of a specific pod by name, including its phase, age, and restart count
 kubectl get po pod_name -o wide: Shows detailed information about the specified pod, including its node assignment, pod IP, container images, and other extended metadata beyond the default output
 kubectl get po pod_name -o yaml: Displays the complete YAML representation of the specified pod, including metadata, specification, and current status
-kubectl get po -o wide: Lists all pods in the current namespace with extended details such as pod IPs, node names, and container images
 kubectl get po pod_name -o json: Displays the complete JSON representation of the specified pod, including metadata, spec, and current status
+kubectl get po -o wide: Lists all pods in the current namespace with extended details such as pod IPs, node names, and container images
 kubectl get po -o yaml: Outputs all pod definitions in the current namespace in YAML format, showing full configuration details such as metadata, spec, and status
 kubectl get po -o json: Outputs all pods in the current namespace in JSON format, showing full configuration details including metadata, spec, and status
 kubectl describe pod pod_name: Displays detailed information about the specified pod, including its containers, events, status, resource usage, node assignment, and any errors or warnings
