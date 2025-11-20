@@ -27,7 +27,7 @@ kubectl get svc: Lists all services in the current Kubernetes namespace, showing
 kubectl delete svc svc_name: Deletes the specified service from the Kubernetes cluster, removing its network endpoints and stopping external access to the associated pods
 kubectl delete svc --all: Deletes all services in the current namespace, removing their network endpoints and stopping external access to the associated pods
 
-#s3
+#s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
 aws s3 ls s3://balaji.practice.k8s: Lists all objects (files/folders) stored inside the S3 bucket balaji.practice.k8s
@@ -35,4 +35,6 @@ export KOPS_STATE_STORE=s3://bucket_name: Sets the environment variable KOPS_STA
 kops create cluster --name cluster_name.k8s.local --zones us-east-1a,us-east-1b --master-size t2.medium --master-count 1 --node-size t2.micro --node-count 2:
  Generates the configuration for a Kubernetes cluster managed by kops, specifying: Cluster name (with .k8s.local DNS suffix), Az's, Master node size&count, Worker node size&count. This prepares, but does not yet build, the cluster
 kops update cluster --name cluster_name.k8s.local --yes --admin: Applies the cluster configuration and starts creating the Kubernetes cluster
- --yes executes the changes without prompting, --admin generates temporary admin credentials for accessing the cluster.
+ --yes executes the changes without prompting, --admin generates temporary admin credentials for accessing the cluster
+kops get cluster: Lists all Kubernetes clusters managed by kops in the configured KOPS_STATE_STORE, showing their names, cloud provider, and current state
+kops delete cluster --name cluster_name_with_extension --yes: Deletes the specified Kubernetes cluster managed by kops, including all associated resources, without prompting for confirmation
