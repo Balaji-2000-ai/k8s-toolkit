@@ -20,7 +20,7 @@ install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 minikube start --driver=docker --force
 
 
-#RedHat
+#minikube-RedHat
 yum install docker -y
 systemctl start docker
 systemctl status docker
@@ -33,3 +33,29 @@ sudo yum install iptables -y
 yum install conntrack -y
 minikube start --driver=docker --force
 minikube status 
+
+
+
+
+#kops:T2.MEDIUM && 30GB EBS Volume
+1. Attach IAM Role to the Instance:
+Go to Actions → Security → Modify IAM role and attach the required IAM role to the EC2 instance
+2. Install AWS CLI:
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+3. Update PATH in .bashrc:
+export PATH=$PATH:/usr/local/bin/
+4. Reload shell configuration:
+source .bashrc
+5. Install KOPS:
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops
+sudo mv kops /usr/local/bin/kops
+6. Install kubectl:
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin
+
+
+
