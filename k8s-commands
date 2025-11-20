@@ -20,3 +20,4 @@ kubectl delete pod --all: Deletes all pods in the current namespace, terminating
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
 aws s3 ls s3://balaji.practice.k8s: Lists all objects (files/folders) stored inside the S3 bucket balaji.practice.k8s
+export KOPS_STATE_STORE=s3://bucket_name: Sets the environment variable KOPS_STATE_STORE to point to the specified S3 bucket. This bucket is used by kops to store cluster configuration, state, and metadata
