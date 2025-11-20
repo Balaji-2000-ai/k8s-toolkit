@@ -37,7 +37,7 @@ minikube status
 
 
 
-#kops:T2.MEDIUM && 30GB EBS Volume
+#kops:30GB EBS Volume
 1. Attach IAM Role to the Instance:
 Go to Actions → Security → Modify IAM role and attach the required IAM role to the EC2 instance
 2. Install AWS CLI:
