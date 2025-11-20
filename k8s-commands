@@ -2,6 +2,7 @@
 
 kubectl get pods/pod/po: Lists all running and pending pods in the current Kubernetes namespace, showing their names, status, number of restarts, and age
 kubectl get pods --show-labels: Lists all pods in the current namespace and displays their associated labels, helping you identify or filter pods based on label metadata
+kubectl label pod pod-1 Env=Dev: Adds or updates the label Env=Dev on the pod named pod-1, which can be used for organization, selection, or filtering of Kubernetes resources
 kubectl get nodes/node/no: Displays the list of Kubernetes cluster nodes along with their status, roles, age, and version
 kubectl run pod_name --image=image_name: Creates a new pod in Kubernetes using the specified image, generating a single-container pod with the given name
 kubectl api-resources: Displays all Kubernetes resource types supported by the cluster’s API, including their short names, API groups, whether they are namespaced, and their resource kinds
