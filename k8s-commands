@@ -21,3 +21,7 @@ aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
 aws s3 ls s3://balaji.practice.k8s: Lists all objects (files/folders) stored inside the S3 bucket balaji.practice.k8s
 export KOPS_STATE_STORE=s3://bucket_name: Sets the environment variable KOPS_STATE_STORE to point to the specified S3 bucket. This bucket is used by kops to store cluster configuration, state, and metadata
+kops create cluster --name cluster_name.k8s.local --zones us-east-1a,us-east-1b --master-size t2.medium --master-count 1 --node-size t2.micro --node-count 2:
+ Generates the configuration for a Kubernetes cluster managed by kops, specifying: Cluster name (with .k8s.local DNS suffix), Az's, Master node size&count, Worker node size&count. This prepares, but does not yet build, the cluster
+kops update cluster --name cluster_name.k8s.local --yes --admin: Applies the cluster configuration and starts creating the Kubernetes cluster
+ --yes executes the changes without prompting, --admin generates temporary admin credentials for accessing the cluster.
