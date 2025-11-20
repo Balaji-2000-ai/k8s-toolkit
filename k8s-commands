@@ -14,3 +14,9 @@ kubectl get po -o json: Outputs all pods in the current namespace in JSON format
 kubectl describe pod pod_name: Displays detailed information about the specified pod, including its containers, events, status, resource usage, node assignment, and any errors or warnings
 kubectl delete pod pod_name: Deletes the specified pod from the Kubernetes cluster. The pod’s containers are terminated, and its resources are freed
 kubectl delete pod --all: Deletes all pods in the current namespace, terminating their containers and freeing associated resources
+
+
+#s3
+aws s3 ls: Lists all S3 buckets in AWS account
+aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
+aws s3 ls s3://balaji.practice.k8s: Lists all objects (files/folders) stored inside the S3 bucket balaji.practice.k8s
