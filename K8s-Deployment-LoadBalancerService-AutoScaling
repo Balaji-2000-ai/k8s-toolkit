@@ -1,3 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: uber
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: uber
+        env: dev
+    spec:
+      containers:
+        - name: cont-1
+          image: shaikmustafa/dm
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "150m"
+            limits:
+              cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uber-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: uber
+    env: dev
+  ports:
+    - port: 80
+      targetPort: 80
+
+
+
+
+
+
+---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
