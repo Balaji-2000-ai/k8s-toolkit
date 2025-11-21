@@ -44,6 +44,8 @@ kubectl rollout status deployment/deployment_name: Displays the current rollout 
 kubectl rollout pause deployment/deployment_name: Pauses the rollout of the specified Deployment, preventing new updates from being applied to its pods until the rollout is resumed
 kubectl rollout resume deployment/deployment_name: Resumes a previously paused Deployment rollout, allowing updates to continue and new pods to be deployed according to the Deployment specification
 
+kubectl get hpa: Lists all Horizontal Pod Autoscalers in the current namespace, showing their target workloads, replica ranges, current metrics, and scaling status
+
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
