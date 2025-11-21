@@ -37,6 +37,9 @@ kubectl scale rc rc_name --replicas 5: Scales the specified ReplicationControlle
 kubectl get rs: Lists all ReplicaSets in the current namespace, showing their names, desired/current/ready replicas, and age
 
 kubectl get deployment: Lists all Deployments in the current namespace, showing their names, desired and current replica counts, available pods, and age
+kubectl set image deployment/deployment_name container_name=image_name: Updates image for the specified container in a Deployment, triggering a rolling update of the pods managed by that Deployment
+kubectl rollout history deployment/deployment_name: Shows the revision history of the specified Deployment, including previous versions of the Deployment configuration and container images
+kubectl rollout undo deployment/deployment_name --to-revision=1: Reverts the specified Deployment to a previous revision (here, revision 1), restoring the Deployment’s pods to the state of that revision
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
