@@ -45,6 +45,8 @@ kubectl rollout pause deployment/deployment_name: Pauses the rollout of the spec
 kubectl rollout resume deployment/deployment_name: Resumes a previously paused Deployment rollout, allowing updates to continue and new pods to be deployed according to the Deployment specification
 
 kubectl get hpa: Lists all Horizontal Pod Autoscalers in the current namespace, showing their target workloads, replica ranges, current metrics, and scaling status
+kubectl get hpa -w: Continuously watches and displays live updates of all Horizontal Pod Autoscalers, showing real-time changes in metrics and replica counts
+kubectl exec -it pod_name -- bash: Opens an interactive bash shell inside the specified pod, allowing you to run commands directly inside the container
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
