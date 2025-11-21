@@ -27,6 +27,17 @@ kubectl get svc: Lists all services in the current Kubernetes namespace, showing
 kubectl delete svc svc_name: Deletes the specified service from the Kubernetes cluster, removing its network endpoints and stopping external access to the associated pods
 kubectl delete svc --all: Deletes all services in the current namespace, removing their network endpoints and stopping external access to the associated pods
 
+#ReplicationController- Self healing Pods
+kubectl get rc: Lists all ReplicationControllers in the current namespace, showing their names, desired vs. current replicas, and age
+kubectl describe rc rc_name: Shows detailed information about the specified ReplicationController, including its labels, selector, replica count, pod template, and recent events
+kubectl delete rc rc_name: Deletes the specified ReplicationController, which will also terminate the pods it manages unless they are orphaned with additional flags
+kubectl delete rc rc_name --cascade=orphan: Deletes the specified ReplicationController but keeps its pods running by orphaning them, meaning they will no longer be managed or monitored by the RC
+kubectl scale rc rc_name --replicas 5: Scales the specified ReplicationController to 5 replicas, ensuring it runs five pod instances
+
+kubectl get rs: Lists all ReplicaSets in the current namespace, showing their names, desired/current/ready replicas, and age
+
+kubectl get deployment: Lists all Deployments in the current namespace, showing their names, desired and current replica counts, available pods, and age
+
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
