@@ -40,6 +40,7 @@ kubectl get deployment: Lists all Deployments in the current namespace, showing 
 kubectl set image deployment/deployment_name container_name=image_name: Updates image for the specified container in a Deployment, triggering a rolling update of the pods managed by that Deployment
 kubectl rollout history deployment/deployment_name: Shows the revision history of the specified Deployment, including previous versions of the Deployment configuration and container images
 kubectl rollout undo deployment/deployment_name --to-revision=1: Reverts the specified Deployment to a previous revision (here, revision 1), restoring the Deployment’s pods to the state of that revision
+kubectl rollout status deployment/deployment_name: Displays the current rollout status of the specified Deployment, showing whether the update is complete, in progress, or has failed
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
