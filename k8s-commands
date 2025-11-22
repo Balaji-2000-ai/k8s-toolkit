@@ -48,6 +48,10 @@ kubectl get hpa: Lists all Horizontal Pod Autoscalers in the current namespace, 
 kubectl get hpa -w: Continuously watches and displays live updates of all Horizontal Pod Autoscalers, showing real-time changes in metrics and replica counts
 kubectl exec -it pod_name -- bash: Opens an interactive bash shell inside the specified pod, allowing you to run commands directly inside the container
 
+kubectl get ds: Lists all DaemonSets in the current namespace, showing their names, desired/current/ready pod counts, and age
+kubectl delete ds daemon_name: Deletes the specified DaemonSet, which also removes all pods managed by that DaemonSet across cluster nodes
+kubectl describe ds daemon_name: Shows detailed information about the specified DaemonSet, including its pod template, node selectors, update strategy, events, and the status of pods running on each node
+
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
