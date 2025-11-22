@@ -52,6 +52,15 @@ kubectl get ds: Lists all DaemonSets in the current namespace, showing their nam
 kubectl delete ds daemon_name: Deletes the specified DaemonSet, which also removes all pods managed by that DaemonSet across cluster nodes
 kubectl describe ds daemon_name: Shows detailed information about the specified DaemonSet, including its pod template, node selectors, update strategy, events, and the status of pods running on each node
 
+kubectl get ns: Lists all namespaces in the Kubernetes cluster, showing their names and current status
+kubectl create ns namespace: (Imperative)Creates a new Kubernetes namespace with the specified name, providing a separate environment for organizing and isolating resources
+kubectl delete ns namespace: Deletes the specified Kubernetes namespace along with all resources (pods, services, deployments, etc.) contained within it
+kubectl run pod_name --image=image_name -n namespace_name: Creates a new pod in the given namespace, instead of the default namespace
+kubectl get po -n namespace_name: Lists all pods in the specified namespace, showing their names, statuses, restarts, and ages
+kubectl config set-context --current --namespace=namespace_name: Sets the default namespace for the current context, so subsequent kubectl commands will automatically operate within that namespace without needing the -n flag
+
+
+
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
