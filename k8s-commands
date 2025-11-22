@@ -62,6 +62,9 @@ kubectl config set-context --current --namespace=namespace_name: Sets the defaul
 
 
 kubectl exec -it pod1_name -c cont-2 -- bash: Opens an interactive Bash shell inside the container cont-2 of the specified pod
+kubectl get pv: Lists all PersistentVolumes (PVs) in the cluster, showing their capacity, access modes, reclaim policy, status, claim, storage class, and age
+kubectl get pvc: Lists all PersistentVolumeClaims (PVCs) in the current namespace, showing their status, volume bound, capacity, access modes, storage class, and age
+kubectl describe pvc pvc_name: Displays detailed information about a specific PersistentVolumeClaim, including its status, events, requested storage, access modes, bound PersistentVolume, and conditions
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
