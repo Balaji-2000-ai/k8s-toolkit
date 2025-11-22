@@ -1,0 +1,19 @@
+#Used to automatically run one pod (monitoring) on every worker node (including any new nodes added to the cluster
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: mydaemonset
+spec:
+  selector:
+    matchLabels:
+      app: monitor
+  template:
+    metadata:
+      labels:
+        app: monitor
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx
+          ports:
+            - containerPort: 80
