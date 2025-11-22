@@ -60,6 +60,7 @@ kubectl get po -n namespace_name: Lists all pods in the specified namespace, sho
 kubectl config set-context --current --namespace=namespace_name: Sets the default namespace for the current context, so subsequent kubectl commands will automatically operate within that namespace without needing the -n flag
 
 
+kubectl exec -it pod1_name -c cont-2 -- bash: Opens an interactive Bash shell inside the container cont-2 of the specified pod
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
