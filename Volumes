@@ -73,3 +73,78 @@ spec:
         - name: emptydirvolume
           hostPath:
             path: "/mydata/"
+
+
+
+#Pv&Pvc
+
+Create a EBS Volume
+
+#Pv
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-2
+spec:
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  awsElasticBlockStore:
+    volumeID: volume_ID
+    fsType: ext4
+
+
+#Pvc
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zomato
+  template:
+    metadata:
+      labels:
+        app: zomato
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx
+          command: ["/bin/bash", "-c", "while true; do echo Welcome to the Deployment; sleep 5; done"]
+          volumeMounts:
+            - name: emptydirvolume
+              mountPath: "/balaji/dir/"
+
+        - name: cont-2
+          image: httpd
+          command: ["/bin/bash", "-c", "while true; do echo Welcome to httpd image; sleep 5; done"]
+          volumeMounts:
+            - name: emptydirvolume
+              mountPath: "/amma/dir/"
+
+      volumes:
+        - name: emptydirvolume
+          persistentVolumeClaim:
+            claimName: pvc-1
