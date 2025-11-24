@@ -1,4 +1,6 @@
 #Pulls the value of the environment variable from a ConfigMap, not hardcoded. The specific key inside the ConfigMap whose value will be injected into the environment variable "value-1" inside the container
+
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -9,6 +11,30 @@ spec:
       image: nginx
       env:
         - name: value-1
+          valueFrom:
+            configMapKeyRef:
+              key: configmap_key 
+              name: configmap_name
+
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+    - name: cont-1
+      image: nginx
+      env:
+        - name: value-1
+          valueFrom:
+            configMapKeyRef:
+              key: configmap_key 
+              name: configmap_name
+
+        - name: value-2
           valueFrom:
             configMapKeyRef:
               key: configmap_key 
