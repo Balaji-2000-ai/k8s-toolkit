@@ -39,3 +39,22 @@ spec:
             configMapKeyRef:
               key: configmap_key 
               name: configmap_name
+
+
+#Loads all keys from a ConfigMap as environment variables
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+spec:
+  containers:
+    - name: cont-1
+      image: nginx
+      envFrom:
+        - configMapRef:
+            name: configmap_name
+
+        - configMapRef:
+            name: configmap_name
+
