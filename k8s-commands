@@ -68,7 +68,7 @@ kubectl describe pvc pvc_name: Displays detailed information about a specific Pe
 
 
 kubectl create cm configmap_name --from-literal Name=Balaji --from-literal College=SETU --from-literal Course=DevOps:
-   Creates a ConfigMap named configmap_name using key–value pairs provided directly in the command.Useful for storing non-confidential configuration data for pods
+   Creates a ConfigMap named configmap_name using key–value pairs provided directly in the command.Useful for storing non-confidential configuration data for pods (Imperative Way-Literal)
 kubectl get cm: Lists all ConfigMaps in the current namespace, showing their names and ages
 kubectl describe cm cm_name: Displays detailed information about the specified ConfigMap, including:Key–value pairs stored in it, Namespace, Labels & annotations, Events
 #s3&cluster
