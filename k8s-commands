@@ -71,9 +71,9 @@ kubectl create cm configmap_name --from-literal Name=Balaji --from-literal Colle
    Creates a ConfigMap named configmap_name using key–value pairs provided directly in the command.Useful for storing non-confidential configuration data for pods (Imperative Way-Literal)
 kubectl get cm: Lists all ConfigMaps in the current namespace, showing their names and ages
 kubectl describe cm cm_name: Displays detailed information about the specified ConfigMap, including:Key–value pairs stored in it, Namespace, Labels & annotations, Events
-kubectl create cm configmap_name --from-file=file_name: Creates a ConfigMap from a file, where the filename becomes the key and the file contents become the value
-kubectl create cm configmap_name --from-env-file=filename.env: Creates a ConfigMap from a .env file, where each KEY=VALUE pair in the file becomes a separate entry in the ConfigMap
-kubectl create cm configmap_name --from-file=folder_name: Creates a ConfigMap from an entire folder, where each file inside the folder becomes a key, and the content of each file becomes the value for that key
+kubectl create cm configmap_name --from-file=file_name: Creates a ConfigMap from a file, where the filename becomes the key and the file contents become the value (Imperative Way-File)
+kubectl create cm configmap_name --from-env-file=filename.env: Creates a ConfigMap from a .env file, where each KEY=VALUE pair in the file becomes a separate entry in the ConfigMap (Imperative Way-EnvFile)
+kubectl create cm configmap_name --from-file=folder_name: Creates a ConfigMap from an entire folder, where each file inside the folder becomes a key, and the content of each file becomes the value for that key (Imperative Way-Folder)
 
 
 #s3&cluster
