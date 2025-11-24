@@ -1,3 +1,4 @@
+#Attaching CM to a Pod
 #Pulls the value of the environment variable from a ConfigMap, not hardcoded. The specific key inside the ConfigMap whose value will be injected into the environment variable "value-1" inside the container
 
 ---
