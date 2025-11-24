@@ -1,3 +1,16 @@
+#CM through Manifest File (Declarative way)
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycm
+data:
+  DATABASE_URL: www.mysql.com
+  PORT: "3306"
+  API_KEY: "your_api_key"
+
+
+
 #Attaching CM to a Pod
 #Pulls the value of the environment variable from a ConfigMap, not hardcoded. The specific key inside the ConfigMap whose value will be injected into the environment variable "value-1" inside the container
 
