@@ -1,0 +1,36 @@
+#emptyDir
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: Uber
+  template:
+    metadata:
+      labels:
+        app: Uber
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx
+          command: ["/bin/bash", "-c", "while true; do echo Welcome to the Deployment; sleep 5; done"]
+          volumeMounts:
+            - name: emptydirvolume
+              mountPath: "/balaji/dir/"
+
+        - name: cont-2
+          image: httpd
+          command: ["/bin/bash", "-c", "while true; do echo Welcome to httpd image; sleep 5; done"]
+          volumeMounts:
+            - name: emptydirvolume
+              mountPath: "/amma/dir/"
+
+      volumes:
+        - name: emptydirvolume
+          emptyDir: {}
