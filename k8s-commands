@@ -66,6 +66,11 @@ kubectl get pv: Lists all PersistentVolumes (PVs) in the cluster, showing their 
 kubectl get pvc: Lists all PersistentVolumeClaims (PVCs) in the current namespace, showing their status, volume bound, capacity, access modes, storage class, and age
 kubectl describe pvc pvc_name: Displays detailed information about a specific PersistentVolumeClaim, including its status, events, requested storage, access modes, bound PersistentVolume, and conditions
 
+
+kubectl create cm configmap_name --from-literal Name=Balaji --from-literal College=SETU --from-literal Course=DevOps:
+   Creates a ConfigMap named configmap_name using key–value pairs provided directly in the command.Useful for storing non-confidential configuration data for pods
+kubectl get cm: Lists all ConfigMaps in the current namespace, showing their names and ages
+kubectl describe cm cm_name: Displays detailed information about the specified ConfigMap, including:Key–value pairs stored in it, Namespace, Labels & annotations, Events
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
