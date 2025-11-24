@@ -34,3 +34,42 @@ spec:
       volumes:
         - name: emptydirvolume
           emptyDir: {}
+
+
+
+#HostPath
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: swiggy
+  template:
+    metadata:
+      labels:
+        app: swiggy
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx
+          command: ["/bin/bash", "-c", "while true; do echo Welcome to the Deployment; sleep 5; done"]
+          volumeMounts:
+            - name: emptydirvolume
+              mountPath: "/balaji/dir/"
+
+        - name: cont-2
+          image: httpd
+          command: ["/bin/bash", "-c", "while true; do echo Welcome to httpd image; sleep 5; done"]
+          volumeMounts:
+            - name: emptydirvolume
+              mountPath: "/amma/dir/"
+
+      volumes:
+        - name: emptydirvolume
+          hostPath:
+            path: "/mydata/"
