@@ -86,6 +86,12 @@ kubectl get roles -n namespace_name: Lists all Roles created inside the specific
 kubectl get rolebinding -n namespace_name: Lists all RoleBindings in the specific namespace, showing which users/groups/service accounts are bound to which Roles
 kubectl get clusterrole: Lists all ClusterRoles available in the Kubernetes cluster
 kubectl get clusterrolebinding: Lists all ClusterRoleBindings in the cluster, showing which users/groups/service accounts are bound to which ClusterRoles
+kubectl auth can-i verb resource --as=user -n namespace: Checks whether a specific user has permission to perform a particular action (verb) on a given resource within a specific namespace by being in minikube context
+     kubectl auth can-i create pods --as=balaji -n dev
+kubectl auth can-i verb resource -n namespace: Checks whether your current user/context has permission to perform a specific action (verb) on a resource within the specified namespace by being logged in
+     kubectl auth can-i create pods -n dev
+
+
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
