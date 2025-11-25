@@ -12,3 +12,23 @@ spec:
     requests.cpu: "150m"
     limits.memory: "38Mi"
     requests.memory: "12Mi"
+
+
+#Pod 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-a
+  namespace: bank
+spec:
+  containers:
+    - name: cont-a
+      image: nginx
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "4Mi"
+        limits:
+          cpu: "80m"
+          memory: "10Mi"
+
