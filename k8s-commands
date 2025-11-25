@@ -84,6 +84,8 @@ kubectl get resourcequota -n namespace_name: Lists all ResourceQuotas in the spe
 
 kubectl get roles -n namespace_name: Lists all Roles created inside the specific namespace, showing their names, creation time, and labels
 kubectl get rolebinding -n namespace_name: Lists all RoleBindings in the specific namespace, showing which users/groups/service accounts are bound to which Roles
+kubectl get clusterrole: Lists all ClusterRoles available in the Kubernetes cluster
+kubectl get clusterrolebinding: Lists all ClusterRoleBindings in the cluster, showing which users/groups/service accounts are bound to which ClusterRoles
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
