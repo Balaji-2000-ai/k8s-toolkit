@@ -10,6 +10,7 @@ kubectl config set-context my-context --cluster=minikube --user=balaji #A Kubern
 kubectl config view #Check Current Context & Users
 kubectl config use-context my-context #Switch Context to Login as balaji. balaji has zero permissions. Cannot create pods, deployments, secrets, etc.So switch back to minikube (admin) to assign RBAC permissions
 kubectl config use-context minikube #Switched back to minikube (admin) to assign RBAC permissions for balaji User
+kubectl config use-context my-context #After assigning all the permissions
 
 
 
