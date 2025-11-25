@@ -80,6 +80,8 @@ kubectl get secret: Lists all Secrets in the current namespace, showing their na
 kubectl create secret generic secret_name --from-literal=username=balaji07 --from-literal=password=Balaji@2000:
     Creates a generic (encrypted) Secret named secret_name with key-value pairs provided directly in the command
 
+kubectl get resourcequota -n namespace_name: Lists all ResourceQuotas in the specified namespace, showing their names and usage vs limits
+
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
 aws s3 mb s3://balaji.practice.k8s: Creates a new S3 bucket named balaji.practice.k8s. The mb command stands for make bucket
