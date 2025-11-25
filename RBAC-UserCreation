@@ -1,0 +1,51 @@
+#To create a user, Kubernetes needs a certificate (CRT)
+#To create a certificate, we need a CSR
+#To create a CSR, we need a private key
+
+openssl genrsa -out balaji.key 2048 #Generate a Private Key
+openssl req -new -key balaji.key -out balaji.csr -subj "/CN=mustafa/O=group1" #Generate a CSR (Certificate Signing Request). CSR is required before generating a certificate. Uses the private key balaji.key
+openssl x509 -req -in balaji.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out balaji.crt -days 500 #Sign the CSR to Create the Certificate(balaji.crt). Valid for 500 days
+kubectl config set-credentials balaji --client-certificate=balaji.crt --client-key=balaji.key #Creates a new Kubernetes user named balaji. Authenticates using:balaji.crt → certificate, balaji.key → private key. User exists but has NO permissions yet (RBAC not assigned)
+kubectl config set-context my-context --cluster=minikube --user=balaji #A Kubernetes context = cluster + user + namespace. Switching to this context means you act as balaji inside the minikube cluster
+kubectl config view #Check Current Context & Users
+kubectl config use-context my-context #Switch Context to Login as balaji. balaji has zero permissions. Cannot create pods, deployments, secrets, etc.So switch back to minikube (admin) to assign RBAC permissions
+kubectl config use-context minikube #Switched back to minikube (admin) to assign RBAC permissions for balaji User
+
+
+
+
+#Role: Defines permissions within a specific namespace. Only inside one namespace. Cannot give access across the entire cluster.
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: dev-role
+  namespace: dev
+rules:
+  - apiGroups: ["*"]
+    resources: ["pods", "deployments"]
+    verbs: ["get", "list", "create"]
+
+  - apiGroups: ["*"]
+    resources: ["services"]
+    verbs: ["get", "list", "create", "delete"]
+
+---
+#RoleBinding: Binds Role to a user, group, or service account. Only in the same namespace as the Role. Grants the permissions defined in the Role. Here attaching Role "dev-role" to user balaji
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: dev-role-binding
+  namespace: dev
+subjects:
+  - kind: User
+    name: balaji
+    apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+  kind: Role
+  name: dev-role
+  apiGroup: rbac.authorization.k8s.io
+
