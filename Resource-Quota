@@ -1,0 +1,14 @@
+kubectl create ns bank
+
+#Attaching RQ to Namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: my-rq
+  namespace: bank
+spec:
+  hard:
+    limits.cpu: "200m"
+    requests.cpu: "150m"
+    limits.memory: "38Mi"
+    requests.memory: "12Mi"
