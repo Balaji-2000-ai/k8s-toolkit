@@ -50,3 +50,4 @@ roleRef:
   name: dev-role
   apiGroup: rbac.authorization.k8s.io
 
+#To increase or decrease a user’s permissions in a namespace, edit roles file and switch back to the admin context and apply the updated RBAC configuration: kubectl apply -f file_name.yml
