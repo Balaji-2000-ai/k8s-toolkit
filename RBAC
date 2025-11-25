@@ -51,3 +51,40 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 #To increase or decrease a user’s permissions in a namespace, edit roles file and switch back to the admin context and apply the updated RBAC configuration: kubectl apply -f file_name.yml
+
+
+
+
+
+#ClusterRole: Defines permissions cluster-wide (Across all namespaces). ClusterRoles can also be used inside a single namespace if needed. 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: flm-cluster-role
+rules:
+  - apiGroups: ["*"]
+    resources: ["pods", "deployments"]
+    verbs: ["get", "list", "create"]
+
+  - apiGroups: ["*"]
+    resources: ["services"]
+    verbs: ["get", "list", "create", "delete"]
+
+
+#ClusterRoleBinding: Attaches a ClusterRole to a user cluster-wide. Applies to all namespaces. Gives cluster-level access
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: flm-cluster-role-binding
+subjects:
+  - kind: User
+    name: balaji
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+    kind: ClusterRole
+    name: flm-cluster-role
+    apiGroup: rbac.authorization.k8s.io
+
+
