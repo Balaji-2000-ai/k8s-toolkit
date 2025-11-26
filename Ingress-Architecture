@@ -1,4 +1,6 @@
 User → Cloud LoadBalancer → Ingress Controller Pod → ClusterIP Service → Pods
+
+
 The user makes a request: https://myapp.example.com
 In the cloud, the Ingress Controller creates a cloud load balancer automatically (AWS → ELB). This cloud-managed LoadBalancer has a public IP, which is where user traffic first lands
 The load balancer forwards traffic into the cluster to the Ingress Controller. The Ingress Controller is just a pod running inside Kubernetes, but it is exposed to the outside world through:Service type: LoadBalancer
