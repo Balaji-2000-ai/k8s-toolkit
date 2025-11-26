@@ -1,0 +1,24 @@
+#If the file exists, probe passes. If the file is removed or missing → probe fails, and Kubernetes restarts the container
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+spec:
+  containers:
+    - name: liveness
+      image: ubuntu
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/mustafa; sleep 300
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/mustafa
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        timeoutSeconds: 30
+
+
