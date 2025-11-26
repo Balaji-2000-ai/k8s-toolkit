@@ -78,7 +78,7 @@ kubectl create cm configmap_name --from-file=folder_name: Creates a ConfigMap fr
 
 kubectl get secret: Lists all Secrets in the current namespace, showing their names, types, and ages
 kubectl create secret generic secret_name --from-literal=username=balaji07 --from-literal=password=Balaji@2000:
-    Creates a generic (encrypted) Secret named secret_name with key-value pairs provided directly in the command
+    Creates a generic (encrypted/opaque) Secret named secret_name with key-value pairs provided directly in the command
 
 kubectl get resourcequota -n namespace_name: Lists all ResourceQuotas in the specified namespace, showing their names and usage vs limits
 
