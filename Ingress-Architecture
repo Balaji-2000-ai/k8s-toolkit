@@ -1,0 +1,16 @@
+User → Cloud LoadBalancer → Ingress Controller Pod → ClusterIP Service → Pods
+The user makes a request: https://myapp.example.com
+In the cloud, the Ingress Controller creates a cloud load balancer automatically (AWS → ELB). This cloud-managed LoadBalancer has a public IP, which is where user traffic first lands
+The load balancer forwards traffic into the cluster to the Ingress Controller. The Ingress Controller is just a pod running inside Kubernetes, but it is exposed to the outside world through:Service type: LoadBalancer
+The Ingress Controller receives the request, reads the rules in the Ingress resource, and decides which backend service should handle the request.
+The Ingress Controller then forwards traffic to ClusterIP service for the application which are accessible only inside the cluster, not from outside
+Finally, the ClusterIP service load-balances traffic to your application pods
+
+
+
+
+Application Services Stay as ClusterIP:
+
+Ingress replaces NodePort/LoadBalancer for apps. So application services do not need external exposure
+If each application exposed itself using NodePort/LoadBalancer, it would be Hard to manage, Insecure, Expensive (cloud LB cost!), Messy with many public endpoints
+So only the Ingress Controller is exposed externally. All other app services remain internal (ClusterIP)
