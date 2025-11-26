@@ -92,6 +92,10 @@ kubectl auth can-i verb resource -n namespace: Checks whether your current user/
      kubectl auth can-i create pods -n dev
 
 
+kubectl get ing/ingress: Lists all Ingress resources in the current namespace, displaying their hosts, rules, backends, and status
+kubectl describe ing ingress-name: Shows detailed information about a specific Ingress resource, including its rules, backend services, annotations, events, and controller-related details
+kubectl get ing -n namespace-name: Lists all Ingress resources in the specified namespace, showing their names, class, hosts, addresses, ports, and age
+
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
