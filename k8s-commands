@@ -103,6 +103,14 @@ helm repo remove repo_name: Removes the specified Helm repository from your loca
 helm create NAME: Generates a new Helm chart with the specified name, creating a directory structure containing templates, configuration files, and a default chart layout
 helm install release_name .: Installs a Helm chart into the Kubernetes cluster using the chart located in the current directory (.) The release name assigned to this installation
 helm upgrade release_name .: Upgrades an existing Helm release using the updated chart files from the current directory (.), applying any new changes to the cluster
+helm list: Displays all Helm releases installed in the current Kubernetes cluster/namespace, showing their names, revision numbers, update times, status, and chart versions
+helm history release_name: Shows the revision history of a specific Helm release, including version numbers, update times, and status for each revision
+helm rollback release_name 1: Rolls back the specified Helm release to a previous revision (in this case, revision 1), reverting any changes made in later upgrades
+helm uninstall release_name: Deletes the specified Helm release from the Kubernetes cluster, removing all associated resources created by that release
+helm install release_name --debug --dry-run .: Simulates the installation of a Helm chart without actually deploying it, showing the rendered Kubernetes manifests and debugging information
+helm template .: Renders the Kubernetes manifests from a Helm chart in the current directory (.) and outputs them to the console without installing the chart into the cluster
+
+
 
 
 #s3&cluster
