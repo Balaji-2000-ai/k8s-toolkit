@@ -96,6 +96,14 @@ kubectl get ing/ingress: Lists all Ingress resources in the current namespace, d
 kubectl describe ing ingress-name: Shows detailed information about a specific Ingress resource, including its rules, backend services, annotations, events, and controller-related details
 kubectl get ing -n namespace-name: Lists all Ingress resources in the specified namespace, showing their names, class, hosts, addresses, ports, and age
 
+helm repo add repo_name resource_github_url: Adds a new Helm chart repository to your local Helm environment, allowing you to install and fetch charts from the specified repository URL
+helm repo update: Fetches the latest list of charts from all added Helm repositories, ensuring your local Helm repo index is up to date
+helm repo list: Displays all Helm chart repositories that have been added to your local Helm configuration, showing their names and associated URLs
+helm repo remove repo_name: Removes the specified Helm repository from your local Helm configuration, preventing further installs or updates from that repository
+helm create NAME: Generates a new Helm chart with the specified name, creating a directory structure containing templates, configuration files, and a default chart layout
+helm install release_name .: Installs a Helm chart into the Kubernetes cluster using the chart located in the current directory (.) The release name assigned to this installation
+helm upgrade release_name .: Upgrades an existing Helm release using the updated chart files from the current directory (.), applying any new changes to the cluster
+
 
 #s3&cluster
 aws s3 ls: Lists all S3 buckets in AWS account
