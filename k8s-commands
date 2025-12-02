@@ -111,6 +111,10 @@ helm install release_name --debug --dry-run .: Simulates the installation of a H
 helm template .: Renders the Kubernetes manifests from a Helm chart in the current directory (.) and outputs them to the console without installing the chart into the cluster
 
 
+kubectl get jobs: Lists all Kubernetes Jobs in the current namespace, showing their names, completions, duration, and age
+kubectl delete job job-name: Deletes the specified Kubernetes Job, including its associated Pods (unless they are orphaned by specific settings)
+
+
 
 
 #s3&cluster
