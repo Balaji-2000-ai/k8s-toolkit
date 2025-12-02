@@ -1,0 +1,66 @@
+#OneTimeExecution
+#Creates a Kubernetes Job named myjob, which runs a one-time task using an Ubuntu container. The container runs the commands apt update and then sleeps for 20 seconds. The restartPolicy: Never ensures the Pod will not restart after completion or failure
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  template:
+    metadata:
+      name: testjob
+    spec:
+      containers:
+        - image: ubuntu
+          name: cont-1
+          command: ["/bin/bash", "-c", "sudo apt update -y; sleep 20"]
+      restartPolicy: Never
+
+
+
+#parallelism
+#Creates a Job named myjob that runs 3 Pods in parallel (parallelism: 3). Each Pod runs an Ubuntu container executing apt update and then sleeps for 20 seconds. activeDeadlineSeconds: 20 ensures the entire Job will be forcibly terminated if it runs longer than 20 seconds
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  parallelism: 3
+  activeDeadlineSeconds: 20
+  template:
+    metadata:
+      name: testjob
+    spec:
+      containers:
+        - image: ubuntu
+          name: cont-2
+          command: ["/bin/bash", "-c", "sudo apt update -y; sleep 20"]
+      restartPolicy: Never
+
+
+
+
+#Scheduling
+#Creates a CronJob named mycron that runs every minute ("* * * * *"). Each scheduled run creates a Job that starts a Pod using the Ubuntu image, executes apt update, and then sleeps for 20 seconds
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mycron
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: ubuntu
+              name: cont-1
+              command: ["/bin/bash", "-c", "sudo apt update -y; sleep 20"]
+          restartPolicy: Never
+
+
+
+
+
