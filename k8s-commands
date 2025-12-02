@@ -114,7 +114,7 @@ helm template .: Renders the Kubernetes manifests from a Helm chart in the curre
 kubectl get jobs: Lists all Kubernetes Jobs in the current namespace, showing their names, completions, duration, and age
 kubectl delete job job-name: Deletes the specified Kubernetes Job, including its associated Pods (unless they are orphaned by specific settings)
 
-
+kubectl get all -n namespace: Lists all Kubernetes resources in the specified namespace, including Pods, Services, Deployments, ReplicaSets, Jobs, CronJobs, and more — showing their names, statuses
 
 
 #s3&cluster
