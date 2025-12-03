@@ -63,6 +63,30 @@ export KOPS_STATE_STORE=s3://bucket_name
 
 
 
+#EKS: t2.large && 30GB EBS Volume (Cloud Managed)
+1. Attach IAM Role to the Instance:
+Go to Actions → Security → Modify IAM role and attach the required IAM role to the EC2 instance
+2. Install AWS CLI:
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+3. Update PATH in .bashrc:
+export PATH=$PATH:/usr/local/bin/
+4. Reload shell configuration:
+source .bashrc
+5. Install kubectl:
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin
+6. Install EKSCTL:
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+
+
+
+
 #MetricsServer-Scaling
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 kubectl get deployment metrics-server -n kube-system
