@@ -130,3 +130,7 @@ kops update cluster --name cluster_name.k8s.local --yes --admin: Applies the clu
  --yes executes the changes without prompting, --admin generates temporary admin credentials for accessing the cluster
 kops get cluster: Lists all Kubernetes clusters managed by kops in the configured KOPS_STATE_STORE, showing their names, cloud provider, and current state
 kops delete cluster --name cluster_name_with_extension --yes: Deletes the specified Kubernetes cluster managed by kops, including all associated resources, without prompting for confirmation
+
+
+eksctl create cluster --name EKS-1 --region=ap-south-1 --zones=ap-south-1a,ap-south-1b --without-nodegroup:
+  Creates a new Amazon EKS cluster without adding any worker node groups (plan to create custom node groups later)
