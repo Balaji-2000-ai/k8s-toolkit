@@ -102,7 +102,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 #Prometheus & Grafana namespace to isolate Prometheus and Grafana components
 kubectl create ns prometheus
-kubectl create ns Grafana
+kubectl create ns grafana
 
 #Install Helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
