@@ -134,3 +134,6 @@ kops delete cluster --name cluster_name_with_extension --yes: Deletes the specif
 
 eksctl create cluster --name EKS-1 --region=ap-south-1 --zones=ap-south-1a,ap-south-1b --without-nodegroup:
   Creates a new Amazon EKS cluster without adding any worker node groups (plan to create custom node groups later)
+eksctl utils associate-iam-oidc-provider --region ap-south-1 --cluster EKS-1 --approve: Connects your EKS cluster to an IAM OIDC provider so that Kubernetes service accounts can assume IAM roles
+eksctl create nodegroup --cluster=EKS-1 --region=ap-south-1 --name=node2 --node-type=t3.medium --nodes=3 --nodes-min=2 --nodes-max=4 --node-volume-size=20 --ssh-access --ssh-public-key=region_specific_key --managed --asg-access --external-dns-access --full-ecr-access --appmesh-access --alb-ingress-access:
+   Creates a nodegroup for the EKS-1 cluster with controlled scaling, storage, SSH access, and specific IAM permissions
